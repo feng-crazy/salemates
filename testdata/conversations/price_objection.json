@@ -1,0 +1,33 @@
+{
+  "scenario": "price_objection",
+  "description": "Customer raises price objection during sales conversation",
+  "customer": {
+    "open_id": "ou_test_customer_price",
+    "name": "Price Sensitive Customer"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi, I've been looking at your product and it seems interesting.",
+      "timestamp": "2024-03-01T10:00:00Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm glad to hear you're interested in SalesMate Pro. What specific aspects would you like to learn more about?",
+      "timestamp": "2024-03-01T10:00:05Z"
+    },
+    {
+      "role": "user",
+      "content": "Well, I saw that the Pro plan is $999 per month. That's quite expensive for our startup. Do you have anything more affordable?",
+      "timestamp": "2024-03-01T10:01:30Z"
+    },
+    {
+      "role": "assistant",
+      "intent": "price_objection",
+      "emotion": "concerned",
+      "content": "I understand budget is important for a growing startup. Let me tell you about our options:\n\n1. **Starter Plan ($299/month)**: Perfect for small teams with basic automation needs.\n2. **14-day Free Trial**: Try Pro features before committing.\n3. **Annual Discount**: Get 20% off when you pay yearly.\n\nGiven your startup, I'd recommend starting with the Starter plan and upgrading as you scale. Would you like me to schedule a demo to show how the Pro features can specifically help your growth?",
+      "timestamp": "2024-03-01T10:01:45Z"
+    }
+  ],
+  "expected_response_strategy": "empathy_reframe_value"
+}

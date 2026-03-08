@@ -1,0 +1,34 @@
+{
+  "type": "event_callback",
+  "challenge": "test_challenge_string",
+  "token": "test_webhook_token",
+  "event": {
+    "type": "callback",
+    "event_type": "im.message.message_created",
+    "token": "test_webhook_token",
+    "schema": "2.0",
+    "header": {
+      "event_id": "test_event_id_123",
+      "event_type": "im.message.message_created",
+      "create_time": "1709876543000",
+      "token": "test_webhook_token",
+      "app_id": "test_app_id_abc",
+      "tenant_key": "test_tenant_key_abc"
+    },
+    "event": {
+      "message": {
+        "message_id": "om_test_callback_msg_111",
+        "msg_type": "text",
+        "content": "{\"text\":\"This is a test callback message\"}",
+        "create_time": "1709876543000"
+      },
+      "sender": {
+        "sender_id": {
+          "open_id": "ou_test_callback_user"
+        },
+        "sender_type": "user"
+      }
+    }
+  },
+  "tenant_key": "test_tenant_key_abc"
+}

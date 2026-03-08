@@ -1,0 +1,93 @@
+services:
+  salesmate-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: salesmate-app
+    ports:
+      - "18790:18790"
+      - "18791:18791"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      openviking:
+        condition: service_started
+    environment:
+      - FEISHU_APP_ID=${FEISHU_APP_ID}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET}
+      - LLM_API_KEY=${LLM_API_KEY}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://redis:6379/0
+      - OPENVIKING_URL=http://openviking:1933
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - WORKSPACE_PATH=/app/workspace
+    volumes:
+      - ./workspace:/app/workspace
+      - ./config:/app/config:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:18790/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: salesmate-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:15.8-alpine
+    container_name: salesmate-postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-salesmate}
+      - POSTGRES_USER=${POSTGRES_USER:-salesmate}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-salesmate}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  openviking:
+    image: openviking/server:1.0.0
+    container_name: salesmate-openviking
+    ports:
+      - "1933:1933"
+    volumes:
+      - openviking_data:/root/.openviking
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:1933/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  openviking_data:
+    driver: local
+
+networks:
+  default:
+    name: salesmate-network

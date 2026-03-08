@@ -1,0 +1,100 @@
+{
+  "scenario": "full_sales_cycle",
+  "description": "Complete sales cycle from lead to customer",
+  "customer": {
+    "open_id": "ou_test_customer_full",
+    "name": "Enterprise Buyer",
+    "company": "Tech Corp Inc."
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello! I'm looking for a solution to help automate our sales process.",
+      "timestamp": "2024-03-01T09:00:00Z",
+      "stage": "lead"
+    },
+    {
+      "role": "assistant",
+      "intent": "feature_request",
+      "emotion": "neutral",
+      "content": "Hello! I'd be happy to help you find the right solution. Could you tell me a bit about your company and what challenges you're facing with your current sales process?",
+      "timestamp": "2024-03-01T09:00:05Z",
+      "stage": "lead"
+    },
+    {
+      "role": "user",
+      "content": "We have a team of 30 sales reps and we're struggling to follow up with all our leads in a timely manner. We're losing potential customers because of slow response times.",
+      "timestamp": "2024-03-01T09:01:30Z",
+      "stage": "lead"
+    },
+    {
+      "role": "assistant",
+      "intent": "feature_request",
+      "emotion": "interested",
+      "content": "That sounds like a common challenge for growing sales teams. SalesMate Pro was designed specifically to solve this problem. Here are some key features:\n\n1. **Automated Lead Follow-up**: Never miss a lead with intelligent, personalized follow-ups.\n2. **Lead Scoring**: Our AI prioritizes your most promising leads.\n3. **Real-time Alerts**: Get notified immediately when hot leads engage.\n\nWould you like me to show you a quick demo of these features?",
+      "timestamp": "2024-03-01T09:02:00Z",
+      "stage": "lead"
+    },
+    {
+      "role": "user",
+      "content": "That sounds interesting! Can you tell me more about the pricing?",
+      "timestamp": "2024-03-01T09:03:00Z",
+      "stage": "opportunity"
+    },
+    {
+      "role": "assistant",
+      "intent": "price_inquiry",
+      "emotion": "neutral",
+      "content": "Absolutely! We have several plans:\n\n- **Starter ($299/mo)**: Up to 10 users, basic automation\n- **Pro ($999/mo)**: Up to 50 users, full AI features\n- **Enterprise (Custom)**: Unlimited users, dedicated support\n\nGiven your team size of 30, the Pro plan would be ideal. Would you like to start a free 14-day trial to see if it's a good fit?",
+      "timestamp": "2024-03-01T09:03:20Z",
+      "stage": "opportunity"
+    },
+    {
+      "role": "user",
+      "content": "Sure, let's start the trial. How do I get set up?",
+      "timestamp": "2024-03-01T09:04:30Z",
+      "stage": "opportunity"
+    },
+    {
+      "role": "assistant",
+      "intent": "buy_intent",
+      "emotion": "happy",
+      "content": "Great decision! Here's how to get started:\n\n1. Click the link I'll send you to create your account\n2. Our onboarding team will reach out within 24 hours\n3. You'll have full access to Pro features for 14 days\n\nIs there anything specific you'd like to focus on during your trial?",
+      "timestamp": "2024-03-01T09:05:00Z",
+      "stage": "trial"
+    },
+    {
+      "role": "user",
+      "content": "Actually, before we start - do you offer any discounts for annual billing?",
+      "timestamp": "2024-03-01T09:06:00Z",
+      "stage": "opportunity"
+    },
+    {
+      "role": "assistant",
+      "intent": "price_inquiry",
+      "emotion": "neutral",
+      "content": "Yes! We offer a 20% discount for annual billing. That would bring your Pro plan down from $999/month to just $799/month - saving you over $2,000 per year!\n\nWould you like me to include this offer in your trial setup?",
+      "timestamp": "2024-03-01T09:06:20Z",
+      "stage": "opportunity"
+    },
+    {
+      "role": "user",
+      "content": "That sounds good. Let's go ahead with the annual Pro plan.",
+      "timestamp": "2024-03-01T09:07:00Z",
+      "stage": "customer"
+    },
+    {
+      "role": "assistant",
+      "intent": "buy_intent",
+      "emotion": "excited",
+      "content": "Excellent! Welcome to SalesMate Pro! 🎉\n\nI'll send you the signup link now. Our onboarding specialist will contact you within 2 hours to help you get started. Is there a good time for them to reach you?",
+      "timestamp": "2024-03-01T09:07:30Z",
+      "stage": "customer"
+    }
+  ],
+  "expected_outcomes": {
+    "stage_progression": ["lead", "opportunity", "trial", "customer"],
+    "intents_identified": ["feature_request", "price_inquiry", "buy_intent"],
+    "emotions_detected": ["neutral", "interested", "happy", "excited"]
+  }
+}

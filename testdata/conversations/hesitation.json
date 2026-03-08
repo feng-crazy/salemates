@@ -1,0 +1,45 @@
+{
+  "scenario": "hesitation",
+  "description": "Customer shows hesitation about making a purchase decision",
+  "customer": {
+    "open_id": "ou_test_customer_hesitate",
+    "name": "Hesitant Customer"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "I've been using your free trial for the past week and I really like the product.",
+      "timestamp": "2024-03-01T14:00:00Z"
+    },
+    {
+      "role": "assistant",
+      "content": "That's wonderful to hear! We're glad the trial has been helpful. How are you planning to use SalesMate Pro in your workflow?",
+      "timestamp": "2024-03-01T14:00:08Z"
+    },
+    {
+      "role": "user",
+      "content": "I'm just not sure if it's the right time for us to commit. We have a lot on our plate right now.",
+      "timestamp": "2024-03-01T14:02:00Z"
+    },
+    {
+      "role": "assistant",
+      "intent": "hesitation",
+      "emotion": "uncertain",
+      "content": "I completely understand - timing is important. Let me share a few thoughts:\n\n1. **No Rush**: You can pause and resume anytime.\n2. **Momentum Matters**: The insights you've gained in just one week will compound over time.\n3. **Risk-Free**: If it's not the right fit within 30 days, we offer a full refund.\n\nWhat would help you feel more confident about moving forward? I'd be happy to address any specific concerns.",
+      "timestamp": "2024-03-01T14:02:15Z"
+    },
+    {
+      "role": "user",
+      "content": "I guess I'm just worried about the learning curve for my team.",
+      "timestamp": "2024-03-01T14:03:30Z"
+    },
+    {
+      "role": "assistant",
+      "intent": "objection_handling",
+      "emotion": "concerned",
+      "content": "That's a valid concern! We've made onboarding easy:\n\n- **5-minute Setup**: Most teams are up and running in under an hour.\n- **Free Training**: Live onboarding sessions every week.\n- **24/7 Support**: Our team is always here to help.\n\nWould you like me to set up a quick call with our onboarding specialist to walk you through the transition?",
+      "timestamp": "2024-03-01T14:03:45Z"
+    }
+  ],
+  "expected_response_strategy": "address_concerns_build_confidence"
+}

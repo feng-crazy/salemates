@@ -1,0 +1,31 @@
+{
+  "type": "event_callback",
+  "challenge": "",
+  "token": "test_verification_token",
+  "event": {
+    "type": "message",
+    "message_id": "om_test_image_987654321",
+    "root_id": "",
+    "parent_id": "",
+    "msg_type": "image",
+    "content": {
+      "image_key": "test_image_key_abc123"
+    },
+    "sender": {
+      "sender_id": {
+        "open_id": "ou_test_user_abc123",
+        "union_id": "ut_test_union_xyz789",
+        "user_id": "test_user_id"
+      },
+      "sender_type": "user",
+      "tenant_key": "test_tenant_key_abc"
+    },
+    "source": {
+      "open_id": "ou_test_user_abc123"
+    },
+    "create_time": "1709876543000",
+    "update_time": "1709876543000"
+  },
+  "tenant_key": "test_tenant_key_abc",
+  "uuid": "test_uuid_67890"
+}

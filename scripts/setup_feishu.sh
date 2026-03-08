@@ -1,0 +1,76 @@
+#!/bin/bash
+# Feishu App Registration Setup Script
+# Follow these steps to register a Feishu (飞书) application
+
+set -e
+
+echo "=========================================="
+echo "Feishu App Registration Guide"
+echo "=========================================="
+
+echo ""
+echo "Step 1: Create Feishu Application"
+echo "-----------------------------------"
+echo "1. Go to https://open.feishu.cn/"
+echo "2. Log in with your Feishu account"
+echo "3. Navigate to 'My Applications' → 'Create Application'"
+echo "4. Fill in the application name: SalesMate"
+echo "5. Submit and wait for approval"
+
+echo ""
+echo "Step 2: Configure App Permissions"
+echo "-----------------------------------"
+echo "Required permissions:"
+echo "  - im:resource:chat:readonly    (Read chat info)"
+echo "  - im:message:send_as_bot       (Send messages as bot)"
+echo "  - im:message:receive_as_bot    (Receive messages)"
+echo "  - im:chat:member:get_all       (Get chat members)"
+echo "  - im:chat:update_ancestors     (Update chat settings)"
+
+echo ""
+echo "Step 3: Get App Credentials"
+echo "-----------------------------------"
+echo "1. Go to 'Credentials & Basic Info' in your app"
+echo "2. Note down:"
+echo "   - App ID (FEISHU_APP_ID)"
+echo "   - App Secret (FEISHU_APP_SECRET)"
+
+echo ""
+echo "Step 4: Configure Event Verification"
+echo "-----------------------------------"
+echo "1. Go to 'Event Subscriptions' in your app"
+echo "2. Generate encryption keys:"
+echo "   openssl genrsa 2048 | openssl pkcs8 -topkey -inform PEM -out encrypt_key.pem"
+echo "3. Note down:"
+echo "   - Encrypt Key (from encrypt_key.pem)"
+echo "   - Verification Token (your own random string)"
+
+echo ""
+echo "Step 5: Enable Human Handoff"
+echo "-----------------------------------"
+echo "1. Create a Feishu group for human agents"
+echo "2. Add the bot to the group"
+echo "3. Get the group ID from group settings"
+echo "4. Set: FEISHU_HUMAN_HANDOFF_GROUP_ID=<group_id>"
+
+echo ""
+echo "Step 6: Update Environment Variables"
+echo "-----------------------------------"
+echo "Copy .env.example to .env and fill in:"
+echo "  FEISHU_APP_ID=your_app_id"
+echo "  FEISHU_APP_SECRET=your_app_secret"
+echo "  FEISHU_ENCRYPT_KEY=your_encrypt_key"
+echo "  FEISHU_VERIFICATION_TOKEN=your_verification_token"
+echo "  FEISHU_HUMAN_HANDOFF_GROUP_ID=your_group_id"
+
+echo ""
+echo "Step 7: Deploy Webhook Server"
+echo "-----------------------------------"
+echo "Your server must be accessible via HTTPS."
+echo "Configure the webhook URL in Feishu:"
+echo "  https://your-server.com/webhook/feishu"
+
+echo ""
+echo "=========================================="
+echo "Setup Complete!"
+echo "=========================================="

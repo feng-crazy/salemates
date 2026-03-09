@@ -1,8 +1,8 @@
-# SalesMate Pro - Product Knowledge Base
+# SaleMates Pro - Product Knowledge Base
 
 ## Product Overview
 
-SalesMate Pro is an enterprise-grade AI-powered sales automation platform designed to help businesses streamline their sales processes, improve customer engagement, and close more deals.
+SaleMates Pro is an enterprise-grade AI-powered sales automation platform designed to help businesses streamline their sales processes, improve customer engagement, and close more deals.
 
 ## Key Features
 
@@ -10,7 +10,7 @@ SalesMate Pro is an enterprise-grade AI-powered sales automation platform design
 Our advanced AI algorithms analyze customer behavior, engagement history, and demographic data to score and prioritize leads automatically.
 
 ### 2. Automated Follow-ups
-Never miss a potential customer with intelligent follow-up scheduling. SalesMate Pro automatically schedules and sends follow-up messages based on customer engagement patterns.
+Never miss a potential customer with intelligent follow-up scheduling. SaleMates Pro automatically schedules and sends follow-up messages based on customer engagement patterns.
 
 ### 3. Real-time Analytics
 Get instant insights into your sales pipeline with comprehensive dashboards and real-time reporting.
@@ -37,7 +37,7 @@ Connect with customers across 50+ platforms including:
 A: Yes! We offer a 14-day free trial with full access to all features.
 
 ### Q: Can I integrate with my existing CRM?
-A: Absolutely. SalesMate Pro integrates seamlessly with Salesforce, HubSpot, Pipedrive, and many more.
+A: Absolutely. SaleMates Pro integrates seamlessly with Salesforce, HubSpot, Pipedrive, and many more.
 
 ### Q: What kind of support do you offer?
 A: We provide 24/7 email support, dedicated account managers for Enterprise plans, and comprehensive documentation.

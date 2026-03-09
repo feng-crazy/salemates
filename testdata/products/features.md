@@ -1,4 +1,4 @@
-# SalesMate AI - 功能特性
+# SaleMates AI - 功能特性
 
 ## 核心功能模块
 

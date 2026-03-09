@@ -12,7 +12,7 @@ import json
 import pytest
 from unittest.mock import Mock, AsyncMock
 
-from salesmate.agent.emotion.analyzer import (
+from salemates.agent.emotion.analyzer import (
     CustomerEmotion,
     EmotionAnalyzer,
     EmotionResult,

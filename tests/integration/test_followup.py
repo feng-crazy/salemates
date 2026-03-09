@@ -21,7 +21,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from salesmate.agent.models.customer import SalesStage
+from salemates.agent.models.customer import SalesStage
 
 
 # ============ Mock Follow-up Components ============
@@ -597,8 +597,8 @@ class TestFollowupIntegration:
         """Test follow-up integrates with message bus."""
 
         async def send_via_bus(customer_id: str, message: str):
-            from salesmate.config.schema import SessionKey
-            from salesmate.bus.events import OutboundMessage
+            from salemates.config.schema import SessionKey
+            from salemates.bus.events import OutboundMessage
 
             session_key = SessionKey(type="telegram", channel_id="sales", chat_id=customer_id)
             await message_bus.publish_outbound(

@@ -1,8 +1,8 @@
 # =============================================================================
-# SalesMate Docker Image
+# SaleMates Docker Image
 # =============================================================================
-# Build: docker build -t salesmate:latest .
-# Run:   docker run -d salesmate:latest
+# Build: docker build -t salemates:latest .
+# Run:   docker run -d salemates:latest
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -74,4 +74,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD curl -f http://localhost:18790/health || exit 1
 
 # Default command
-CMD ["salesmate", "gateway"]
+CMD ["salemates", "gateway"]

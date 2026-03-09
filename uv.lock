@@ -3520,7 +3520,7 @@ wheels = [
 ]
 
 [[package]]
-name = "salesmate"
+name = "salemates"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

@@ -8,7 +8,7 @@ build:
 	docker-compose build
 
 test:
-	pytest tests/ -v --cov=salesmate
+	pytest tests/ -v --cov=salemates
 
 lint:
 	ruff check .

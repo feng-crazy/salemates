@@ -79,7 +79,7 @@ Use SPIN when:
 4. **Genuine curiosity**: Show real interest in understanding their situation
 5. **Adapt to context**: Use previous conversation context to guide questions
 
-## Integration with SalesMate
+## Integration with SaleMates
 
 When customer shows HESITATION intent:
 1. DO NOT immediately send pricing or quote

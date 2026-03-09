@@ -4,7 +4,7 @@ Unit tests for sales stage state machine.
 
 import pytest
 
-from salesmate.agent.stages import (
+from salemates.agent.stages import (
     NEGATIVE_SIGNALS,
     POSITIVE_SIGNALS,
     SIGNAL_TO_STAGE,

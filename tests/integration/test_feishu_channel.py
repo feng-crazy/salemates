@@ -18,8 +18,8 @@ from dataclasses import dataclass, field
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from salesmate.config.schema import SessionKey
-from salesmate.bus.events import InboundMessage, OutboundMessage
+from salemates.config.schema import SessionKey
+from salemates.bus.events import InboundMessage, OutboundMessage
 
 
 # ============ Mock Fixtures ============

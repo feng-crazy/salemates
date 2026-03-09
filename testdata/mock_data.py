@@ -1,7 +1,7 @@
-# Copyright (c) 2026 SalesMate Team
+# Copyright (c) 2026 SaleMates Team
 # SPDX-License-Identifier: Apache-2.0
 
-"""Mock customer data for testing SalesMate"""
+"""Mock customer data for testing SaleMates"""
 
 # Sample customer conversations
 SAMPLE_CONVERSATIONS = [

@@ -50,7 +50,7 @@ else
 fi
 
 # Start services
-log_info "Starting SalesMate services..."
+log_info "Starting SaleMates services..."
 docker-compose up -d
 
 # Wait for services to be healthy

@@ -19,7 +19,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from salesmate.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
+from salemates.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
 
 
 # ============ Mock RAG Components ============
@@ -179,22 +179,22 @@ def product_knowledge_base():
     docs = [
         Document(
             id="prod-001",
-            content="SalesMate企业版提供团队协作功能，支持最多100人同时在线协作，包含文档共享、实时编辑、任务分配等功能。价格：每年10万元。",
+            content="SaleMates企业版提供团队协作功能，支持最多100人同时在线协作，包含文档共享、实时编辑、任务分配等功能。价格：每年10万元。",
             metadata={"category": "产品功能", "product": "企业版"},
         ),
         Document(
             id="prod-002",
-            content="SalesMate专业版适合中小团队，支持最多20人协作，包含基础协作功能。价格：每年3万元。",
+            content="SaleMates专业版适合中小团队，支持最多20人协作，包含基础协作功能。价格：每年3万元。",
             metadata={"category": "产品功能", "product": "专业版"},
         ),
         Document(
             id="prod-003",
-            content="SalesMate支持多种集成：飞书、钉钉、企业微信、Slack等主流办公软件。API接口开放，支持自定义集成。",
+            content="SaleMates支持多种集成：飞书、钉钉、企业微信、Slack等主流办公软件。API接口开放，支持自定义集成。",
             metadata={"category": "集成能力", "product": "全部版本"},
         ),
         Document(
             id="prod-004",
-            content="SalesMate采用银行级数据加密，所有数据存储在阿里云，通过ISO27001认证，支持私有化部署。",
+            content="SaleMates采用银行级数据加密，所有数据存储在阿里云，通过ISO27001认证，支持私有化部署。",
             metadata={"category": "安全性", "product": "全部版本"},
         ),
         Document(
@@ -204,7 +204,7 @@ def product_knowledge_base():
         ),
         Document(
             id="prod-006",
-            content="SalesMate提供7x24小时技术支持，企业版客户享有专属客户经理，响应时间不超过2小时。",
+            content="SaleMates提供7x24小时技术支持，企业版客户享有专属客户经理，响应时间不超过2小时。",
             metadata={"category": "服务支持", "product": "企业版"},
         ),
         Document(
@@ -222,7 +222,7 @@ def faq_knowledge_base():
     docs = [
         Document(
             id="faq-001",
-            content="问：如何开始使用SalesMate？答：注册账号后，系统会引导您完成初始化设置，包括团队邀请、权限配置、工作流程设置等，通常10分钟内可以完成。",
+            content="问：如何开始使用SaleMates？答：注册账号后，系统会引导您完成初始化设置，包括团队邀请、权限配置、工作流程设置等，通常10分钟内可以完成。",
             metadata={"category": "FAQ", "type": "入门"},
         ),
         Document(
@@ -339,7 +339,7 @@ class TestRAGSemanticSearch:
         """Test search respects top_k limit."""
         await rag_system.index_knowledge_base(product_knowledge_base, "products")
 
-        result = await rag_system.retrieve("SalesMate", "products", top_k=3)
+        result = await rag_system.retrieve("SaleMates", "products", top_k=3)
 
         assert len(result.documents) <= 3
 
@@ -422,7 +422,7 @@ class TestRAGHallucinationPrevention:
         await rag_system.index_knowledge_base(product_knowledge_base, "products")
 
         # Specific query should have higher confidence
-        specific_response = await rag_system.query("SalesMate企业版支持最多多少人协作？")
+        specific_response = await rag_system.query("SaleMates企业版支持最多多少人协作？")
         # Vague query should have lower confidence
         vague_response = await rag_system.query("说说产品")
 

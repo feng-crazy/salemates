@@ -1,6 +1,6 @@
 # AGENTS.md: tests
 
-Test suite for SalesMate AI - unit, integration, and acceptance tests.
+Test suite for SaleMates AI - unit, integration, and acceptance tests.
 
 ---
 
@@ -91,7 +91,7 @@ pytest tests/integration/
 pytest tests/acceptance/
 
 # With coverage
-pytest tests/ -v --cov=salesmate --cov-report=html
+pytest tests/ -v --cov=salemates --cov-report=html
 
 # Specific test file
 pytest tests/unit/test_intent.py -v

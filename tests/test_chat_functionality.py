@@ -8,12 +8,12 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from salesmate.bus.events import OutboundMessage
-from salesmate.bus.queue import MessageBus
-from salesmate.channels.chat import ChatChannel, ChatChannelConfig
-from salesmate.channels.single_turn import SingleTurnChannel, SingleTurnChannelConfig
-from salesmate.cli.commands import prepare_agent_channel
-from salesmate.config.schema import SessionKey
+from salemates.bus.events import OutboundMessage
+from salemates.bus.queue import MessageBus
+from salemates.channels.chat import ChatChannel, ChatChannelConfig
+from salemates.channels.single_turn import SingleTurnChannel, SingleTurnChannelConfig
+from salemates.cli.commands import prepare_agent_channel
+from salemates.config.schema import SessionKey
 
 
 @pytest.fixture

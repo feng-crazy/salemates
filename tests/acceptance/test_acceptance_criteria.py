@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 """
-Acceptance tests for SalesMate.
+Acceptance tests for SaleMates.
 
 These tests validate the 7 core acceptance criteria:
 
@@ -24,11 +24,11 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from salesmate.agent.emotion.analyzer import CustomerEmotion, EmotionResult
-from salesmate.agent.models.customer import BANTProfile, CustomerProfile, SalesStage
-from salesmate.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
-from salesmate.agent.safety.emotion_fuse import EmotionFuse, EmotionFuseConfig, FuseAction
-from salesmate.agent.safety.guardrails import (
+from salemates.agent.emotion.analyzer import CustomerEmotion, EmotionResult
+from salemates.agent.models.customer import BANTProfile, CustomerProfile, SalesStage
+from salemates.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
+from salemates.agent.safety.emotion_fuse import EmotionFuse, EmotionFuseConfig, FuseAction
+from salemates.agent.safety.guardrails import (
     CompetitorGuardrailConfig,
     create_default_guardrails,
     GuardrailType,
@@ -36,7 +36,7 @@ from salesmate.agent.safety.guardrails import (
     PriceGuardrailConfig,
     ViolationSeverity,
 )
-from salesmate.agent.stages.state_machine import SalesStageStateMachine
+from salemates.agent.stages.state_machine import SalesStageStateMachine
 
 
 # ============ Mock Classes ============
@@ -265,7 +265,7 @@ class FollowUpEngine:
 
     def get_followup_message(self, stage: SalesStage) -> str:
         messages = {
-            SalesStage.NEW_CONTACT: "您好，我是SalesMate的客户经理，想了解一下您对我们的产品是否有兴趣？",
+            SalesStage.NEW_CONTACT: "您好，我是SaleMates的客户经理，想了解一下您对我们的产品是否有兴趣？",
             SalesStage.DISCOVERY: "您好，想了解一下您对我们讨论的需求有什么想法吗？",
             SalesStage.PRESENTATION: "您好，关于我们讨论的方案，您有什么问题吗？",
             SalesStage.NEGOTIATION: "您好，关于价格方面，我们可以进一步沟通。",
@@ -348,17 +348,17 @@ def product_knowledge_base():
     docs = [
         Document(
             id="prod-001",
-            content="SalesMate企业版提供团队协作功能，支持最多100人同时在线协作。价格：每年10万元。",
+            content="SaleMates企业版提供团队协作功能，支持最多100人同时在线协作。价格：每年10万元。",
             metadata={"category": "产品功能", "product": "企业版"},
         ),
         Document(
             id="prod-002",
-            content="SalesMate支持私有化部署，所有数据可部署在企业内部服务器，通过ISO27001认证。",
+            content="SaleMates支持私有化部署，所有数据可部署在企业内部服务器，通过ISO27001认证。",
             metadata={"category": "安全性", "product": "全部版本"},
         ),
         Document(
             id="prod-003",
-            content="SalesMate采用银行级数据加密，所有数据存储在阿里云，通过ISO27001认证。",
+            content="SaleMates采用银行级数据加密，所有数据存储在阿里云，通过ISO27001认证。",
             metadata={"category": "安全性", "product": "全部版本"},
         ),
         Document(

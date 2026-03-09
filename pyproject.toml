@@ -1,13 +1,13 @@
 [project]
-name = "salesmate"
+name = "salemates"
 version = "0.1.0"
 description = "AI Sales Champion - 24/7 autonomous sales agent with Top Sales mindset"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "SalesMate team"}
+    {name = "SaleMates team"}
 ]
-keywords = ["ai", "agent", "sales", "chatbot", "salesmate"]
+keywords = ["ai", "agent", "sales", "chatbot", "salemates"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -43,7 +43,7 @@ dependencies = [
     "gradio>=6.6.0",
     "py-machineid>=1.0.0",
     "ruff>=0.15.1",
-    # SalesMate specific
+    # SaleMates specific
     "redis>=5.0.0",
     "psycopg2-binary>=2.9.0",
     "sqlalchemy>=2.0.0",
@@ -105,38 +105,38 @@ full = [
 ]
 
 [project.scripts]
-salesmate = "salesmate.cli.commands:app"
+salemates = "salemates.cli.commands:app"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["salesmate"]
+packages = ["salemates"]
 
 [tool.hatch.build.targets.wheel.sources]
-"salesmate" = "salesmate"
+"salemates" = "salemates"
 
 # Include non-Python files in skills and sandbox
 [tool.hatch.build]
 include = [
-    "salesmate/**/*.py",
-    "salesmate/**/*.mjs",
-    "salesmate/skills/**/*.md",
-    "salesmate/skills/**/*.sh",
-    "salesmate/console/static/**/*",
+    "salemates/**/*.py",
+    "salemates/**/*.mjs",
+    "salemates/skills/**/*.md",
+    "salemates/skills/**/*.sh",
+    "salemates/console/static/**/*",
 ]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "salesmate/",
+    "salemates/",
     "bridge/",
     "README.md",
     "LICENSE",
 ]
 
 [tool.hatch.build.targets.wheel.force-include]
-"bridge" = "salesmate/bridge"
+"bridge" = "salemates/bridge"
 
 [tool.ruff]
 line-length = 100

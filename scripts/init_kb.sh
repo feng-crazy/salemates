@@ -1,8 +1,8 @@
 #!/bin/bash
-# Copyright (c) 2026 SalesMate Team
+# Copyright (c) 2026 SaleMates Team
 # SPDX-License-Identifier: Apache-2.0
 
-# Initialize SalesMate knowledge base
+# Initialize SaleMates knowledge base
 # This script sets up the initial skills and memory structures
 
 set -e
@@ -10,7 +10,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
-echo "Initializing SalesMate knowledge base..."
+echo "Initializing SaleMates knowledge base..."
 
 # Create workspace directories if they don't exist
 mkdir -p "$PROJECT_ROOT/workspace/memory"
@@ -136,29 +136,29 @@ ingest_doc() {
 
 # Ingest all product documents
 ingest_doc "$PRODUCTS_DIR/product_overview.md" \
-    "SalesMate AI 产品概述 - 核心定位、价值主张、目标客户" \
+    "SaleMates AI 产品概述 - 核心定位、价值主张、目标客户" \
     "$TARGET_PATH"
 
 ingest_doc "$PRODUCTS_DIR/pricing.md" \
-    "SalesMate AI 定价方案 - 订阅计划、折扣政策、常见问题" \
+    "SaleMates AI 定价方案 - 订阅计划、折扣政策、常见问题" \
     "$TARGET_PATH"
 
 ingest_doc "$PRODUCTS_DIR/features.md" \
-    "SalesMate AI 功能特性 - 核心功能模块、技术规格、API接口" \
+    "SaleMates AI 功能特性 - 核心功能模块、技术规格、API接口" \
     "$TARGET_PATH"
 
 ingest_doc "$PRODUCTS_DIR/deployment.md" \
-    "SalesMate AI 部署方案 - SaaS、私有化部署、混合部署选项" \
+    "SaleMates AI 部署方案 - SaaS、私有化部署、混合部署选项" \
     "$TARGET_PATH"
 
 ingest_doc "$PRODUCTS_DIR/competitors.md" \
-    "SalesMate AI 竞品对比 - 市场定位、功能对比、选型建议" \
+    "SaleMates AI 竞品对比 - 市场定位、功能对比、选型建议" \
     "$TARGET_PATH"
 
 # Also ingest the sample product if it exists
 if [ -f "$PRODUCTS_DIR/sample_product.md" ]; then
     ingest_doc "$PRODUCTS_DIR/sample_product.md" \
-        "SalesMate Pro 示例产品知识库" \
+        "SaleMates Pro 示例产品知识库" \
         "$TARGET_PATH"
 fi
 

@@ -1,4 +1,4 @@
-# PROJECT KNOWLEDGE BASE: SalesMate AI
+# PROJECT KNOWLEDGE BASE: SaleMates AI
 
 **Generated:** 2026-03-08
 **Stack:** Python 3.11+ (primary), TypeScript/Node.js 20+ (bridge)
@@ -14,7 +14,7 @@
 ## STRUCTURE
 
 ```
-salesmate/              # Main Python package
+salemates/              # Main Python package
 ├── agent/              # Core AI agent logic (loop, tools, safety, stages)
 ├── channels/           # Multi-platform adapters (Feishu, Telegram, WhatsApp, etc.)
 ├── bus/                # Event-driven message bus
@@ -43,12 +43,12 @@ workspace/              # Runtime workspace (skills, memory)
 
 | Task | Location | Notes |
 |------|----------|-------|
-| Entry point | `salesmate/__main__.py`, `salesmate/cli/commands.py` | CLI via Typer |
-| Agent loop | `salesmate/agent/loop.py` | Core processing engine |
-| Add channel | `salesmate/channels/` | Extend `BaseChannel` |
-| Add tool | `salesmate/agent/tools/` | Extend `Tool` class |
-| Safety rules | `salesmate/agent/safety/guardrails.py` | Price, contract, feature, competitor |
-| Config schema | `salesmate/config/schema.py` | Pydantic models |
+| Entry point | `salemates/__main__.py`, `salemates/cli/commands.py` | CLI via Typer |
+| Agent loop | `salemates/agent/loop.py` | Core processing engine |
+| Add channel | `salemates/channels/` | Extend `BaseChannel` |
+| Add tool | `salemates/agent/tools/` | Extend `Tool` class |
+| Safety rules | `salemates/agent/safety/guardrails.py` | Price, contract, feature, competitor |
+| Config schema | `salemates/config/schema.py` | Pydantic models |
 | Tests | `tests/unit/`, `tests/integration/`, `tests/acceptance/` | pytest + pytest-asyncio |
 
 ---
@@ -90,17 +90,17 @@ workspace/              # Runtime workspace (skills, memory)
 # Development
 make dev          # Start Docker dev environment (ports 18790, 18791, 6379, 5432)
 make install      # pip install -e ".[dev,test,feishu]"
-make test         # pytest tests/ -v --cov=salesmate
+make test         # pytest tests/ -v --cov=salemates
 make lint         # ruff check . && ruff format --check .
 
 # CLI
-salesmate gateway   # Start gateway server (default ports 18790/18791)
-salesmate chat      # Interactive chat with agent
-salesmate status    # Show bot status
-salesmate cron list # Manage scheduled jobs
+salemates gateway   # Start gateway server (default ports 18790/18791)
+salemates chat      # Interactive chat with agent
+salemates status    # Show bot status
+salemates cron list # Manage scheduled jobs
 
 # Docker
-docker build -t salesmate:latest .
+docker build -t salemates:latest .
 docker-compose up -d
 
 # Bridge (TypeScript)
@@ -140,7 +140,7 @@ NewContact → Discovery → Presentation → Negotiation → Close/Lost
 - **Confidence Router**: High/Medium/Low routing decisions
 
 ### Channels (Multi-Platform)
-Extend `BaseChannel` in `salesmate/channels/base.py`:
+Extend `BaseChannel` in `salemates/channels/base.py`:
 - `start()` - Connect to platform
 - `stop()` - Cleanup
 - `send(msg)` - Send message
@@ -155,7 +155,7 @@ pytest tests/                           # All tests
 pytest tests/unit/                      # Unit tests
 pytest tests/integration/               # Integration tests
 pytest tests/acceptance/                # Acceptance tests
-pytest -v --cov=salesmate --cov-report=html  # With coverage
+pytest -v --cov=salemates --cov-report=html  # With coverage
 ```
 
 **Conventions:**

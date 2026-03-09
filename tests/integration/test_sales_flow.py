@@ -19,11 +19,11 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from salesmate.agent.emotion.analyzer import CustomerEmotion, EmotionResult
-from salesmate.agent.models.customer import BANTProfile, CustomerProfile, SalesStage
-from salesmate.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
-from salesmate.agent.safety.emotion_fuse import EmotionFuse, EmotionFuseConfig, FuseAction
-from salesmate.agent.safety.guardrails import (
+from salemates.agent.emotion.analyzer import CustomerEmotion, EmotionResult
+from salemates.agent.models.customer import BANTProfile, CustomerProfile, SalesStage
+from salemates.agent.safety.confidence_router import ConfidenceLevel, ConfidenceRouter
+from salemates.agent.safety.emotion_fuse import EmotionFuse, EmotionFuseConfig, FuseAction
+from salemates.agent.safety.guardrails import (
     CompetitorGuardrailConfig,
     create_default_guardrails,
     GuardrailType,
@@ -31,9 +31,9 @@ from salesmate.agent.safety.guardrails import (
     PriceGuardrailConfig,
     ViolationSeverity,
 )
-from salesmate.agent.stages.state_machine import SalesStageStateMachine
-from salesmate.bus.events import InboundMessage, OutboundMessage
-from salesmate.config.schema import SessionKey
+from salemates.agent.stages.state_machine import SalesStageStateMachine
+from salemates.bus.events import InboundMessage, OutboundMessage
+from salemates.config.schema import SessionKey
 
 
 # ============ Mock Fixtures ============

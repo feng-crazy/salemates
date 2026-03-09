@@ -14,7 +14,7 @@ echo "-----------------------------------"
 echo "1. Go to https://open.feishu.cn/"
 echo "2. Log in with your Feishu account"
 echo "3. Navigate to 'My Applications' → 'Create Application'"
-echo "4. Fill in the application name: SalesMate"
+echo "4. Fill in the application name: SaleMates"
 echo "5. Submit and wait for approval"
 
 echo ""

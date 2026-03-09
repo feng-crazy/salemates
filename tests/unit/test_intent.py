@@ -12,7 +12,7 @@ import json
 import pytest
 from unittest.mock import Mock, AsyncMock, MagicMock
 
-from salesmate.agent.intent.recognizer import (
+from salemates.agent.intent.recognizer import (
     IntentRecognizer,
     IntentResult,
     SalesIntent,

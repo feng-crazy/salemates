@@ -12,7 +12,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 cd "$PROJECT_DIR"
 
-echo "Stopping SalesMate services..."
+echo "Stopping SaleMates services..."
 docker-compose down
 
 # Remove volumes if requested

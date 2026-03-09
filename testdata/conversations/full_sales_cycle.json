@@ -31,7 +31,7 @@
       "role": "assistant",
       "intent": "feature_request",
       "emotion": "interested",
-      "content": "That sounds like a common challenge for growing sales teams. SalesMate Pro was designed specifically to solve this problem. Here are some key features:\n\n1. **Automated Lead Follow-up**: Never miss a lead with intelligent, personalized follow-ups.\n2. **Lead Scoring**: Our AI prioritizes your most promising leads.\n3. **Real-time Alerts**: Get notified immediately when hot leads engage.\n\nWould you like me to show you a quick demo of these features?",
+      "content": "That sounds like a common challenge for growing sales teams. SaleMates Pro was designed specifically to solve this problem. Here are some key features:\n\n1. **Automated Lead Follow-up**: Never miss a lead with intelligent, personalized follow-ups.\n2. **Lead Scoring**: Our AI prioritizes your most promising leads.\n3. **Real-time Alerts**: Get notified immediately when hot leads engage.\n\nWould you like me to show you a quick demo of these features?",
       "timestamp": "2024-03-01T09:02:00Z",
       "stage": "lead"
     },
@@ -87,14 +87,28 @@
       "role": "assistant",
       "intent": "buy_intent",
       "emotion": "excited",
-      "content": "Excellent! Welcome to SalesMate Pro! 🎉\n\nI'll send you the signup link now. Our onboarding specialist will contact you within 2 hours to help you get started. Is there a good time for them to reach you?",
+      "content": "Excellent! Welcome to SaleMates Pro! 🎉\n\nI'll send you the signup link now. Our onboarding specialist will contact you within 2 hours to help you get started. Is there a good time for them to reach you?",
       "timestamp": "2024-03-01T09:07:30Z",
       "stage": "customer"
     }
   ],
   "expected_outcomes": {
-    "stage_progression": ["lead", "opportunity", "trial", "customer"],
-    "intents_identified": ["feature_request", "price_inquiry", "buy_intent"],
-    "emotions_detected": ["neutral", "interested", "happy", "excited"]
+    "stage_progression": [
+      "lead",
+      "opportunity",
+      "trial",
+      "customer"
+    ],
+    "intents_identified": [
+      "feature_request",
+      "price_inquiry",
+      "buy_intent"
+    ],
+    "emotions_detected": [
+      "neutral",
+      "interested",
+      "happy",
+      "excited"
+    ]
   }
 }

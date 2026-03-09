@@ -10,7 +10,7 @@ detecting policy violations in sales agent responses.
 
 import pytest
 
-from salesmate.agent.safety.guardrails import (
+from salemates.agent.safety.guardrails import (
     CompetitorGuardrail,
     CompetitorGuardrailConfig,
     ContractGuardrail,

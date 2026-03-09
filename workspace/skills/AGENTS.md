@@ -97,7 +97,7 @@ Guide sales conversations using SPIN methodology.
 ## LOADING SKILLS
 
 ```python
-from salesmate.agent.skills import SkillsLoader
+from salemates.agent.skills import SkillsLoader
 
 loader = SkillsLoader(workspace_path)
 skills = loader.load_skills()  # Returns list of skill content

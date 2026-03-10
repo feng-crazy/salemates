@@ -3,6 +3,7 @@
 from typing import TYPE_CHECKING, Callable
 
 from salemates.agent.tools.competitor_tool import CompetitorTool
+from salemates.agent.tools.contract_draft import ContractDraftTool
 from salemates.agent.tools.cron import CronTool
 from salemates.agent.tools.customer_profile_tool import CustomerProfileTool
 from salemates.agent.tools.filesystem import ReadFileTool, WriteFileTool, EditFileTool, ListDirTool
@@ -17,8 +18,10 @@ from salemates.agent.tools.ov_file import (
     VikingSearchUserMemoryTool,
     VikingMemoryCommitTool,
 )
+from salemates.agent.tools.proposal_generator import ProposalGeneratorTool
 from salemates.agent.tools.quote_generator import QuoteGeneratorTool
 from salemates.agent.tools.registry import ToolRegistry
+from salemates.agent.tools.sales_coach import SalesCoachTool
 from salemates.agent.tools.shell import ExecTool
 from salemates.agent.tools.web import WebFetchTool
 from salemates.agent.tools.websearch import WebSearchTool
@@ -133,7 +136,10 @@ def register_default_tools(
     if include_sales_tools:
         registry.register(CustomerProfileTool(repository=customer_repository))
         registry.register(QuoteGeneratorTool(max_discount_percent=max_discount_percent))
+        registry.register(ContractDraftTool())
+        registry.register(ProposalGeneratorTool())
         registry.register(CompetitorTool(competitor_names=competitor_names))
+        registry.register(SalesCoachTool())
 
 
 def register_subagent_tools(

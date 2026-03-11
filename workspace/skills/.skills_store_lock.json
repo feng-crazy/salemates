@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "salesforce-api": {
+      "name": "Salesforce",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=salesforce-api",
+      "source": "skillhub",
+      "version": "1.0.4"
+    },
+    "moltforsale": {
+      "name": "moltforsale",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=moltforsale",
+      "source": "skillhub",
+      "version": "1.0.15"
+    },
+    "sales": {
+      "name": "Sales",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=sales",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "sales-manager": {
+      "name": "销售管理技能",
+      "zip_url": "http://lightmake.site/api/v1/download?slug=sales-manager",
+      "source": "skillhub",
+      "version": "1.0.0"
+    }
+  }
+}

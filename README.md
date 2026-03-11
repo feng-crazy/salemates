@@ -15,6 +15,7 @@
 - [发展阶段规划](#-发展阶段规划)
 - [系统架构](#-系统架构)
 - [安全围栏](#-安全围栏与人机协作)
+- [架构改进计划](#-架构改进计划)
 
 ---
 
@@ -138,33 +139,35 @@
 
 **目标**：跑通 OODA 循环，实现基础自动化
 
-| 功能模块 | 实现状态 | 完成度 |
-|---------|---------|--------|
-| 意图识别与情绪分析 | 未实现 | 0% |
-| 产品文档问答 | 未实现 | 0% |
-| SPIN 提问框架 | 未实现 | 0% |
-| 5阶段状态机 | 未实现 | 0% |
-| 多渠道接入 | 未实现 | 0% (10 channels) |
-| 安全围栏 | 未实现 | 0% |
-| 主动跟进引擎 | 未实现 | 0% |
-| Docker部署 | 未实现 | 0% |
-| **销售方案生成** | 未实现 | 0% |
-| **智能合同起草** | 未实现 | 0% |
-| **销售教练模式** | 未实现 | 0% |
-| **客户画像提取** | 未实现 | 0% |
-| **千人千面个性化** | 未实现 | 0% |
+| 功能模块 | 实现状态 | 完成度 | 说明 |
+|---------|---------|--------|------|
+| 意图识别与情绪分析 | ✅ 已实现 | 90% | IntentRecognizer + EmotionAnalyzer |
+| 产品文档问答 | ✅ 已实现 | 80% | OpenViking检索 + Grounded回复 |
+| SPIN 提问框架 | ⚠️ 部分实现 | 50% | SKILL.md存在，需方法论注入 |
+| 5阶段状态机 | ✅ 已实现 | 80% | SalesStageStateMachine |
+| 多渠道接入 | ⚠️ 部分实现 | 40% | Feishu/Telegram已接入 |
+| 安全围栏 | ⚠️ 部分实现 | 70% | 组件已实现，需集成到Loop |
+| 主动跟进引擎 | ❌ 未实现 | 0% | - |
+| Docker部署 | ✅ 已实现 | 90% | docker-compose配置完整 |
+| **销售方案生成** | ✅ 已实现 | 85% | ProposalGeneratorTool (576行) |
+| **智能合同起草** | ✅ 已实现 | 85% | ContractDraftTool (453行) |
+| **销售教练模式** | ✅ 已实现 | 80% | SalesCoachTool (412行) |
+| **客户画像提取** | ❌ 未实现 | 0% | 需新建CustomerProfileExtractor |
+| **千人千面个性化** | ❌ 未实现 | 0% | 需新建PersonalizationEngine |
+
+> 📋 **架构改进计划**: 已实现的安全组件（GuardrailManager、ConfidenceRouter、HumanHandoffManager）尚未集成到AgentLoop中。详见 [架构改进计划](#-架构改进计划)。
 
 
 ### Phase 2: Growth - "主动谈判家"
 
 **目标**：提升转化率，实现人机深度协作
 
-- [ ] 长期记忆 (MemoryStore + EnhancedMemoryManager)
-- [ ] 技能市场 (Plugin System - workspace/skills/)
+- [x] 长期记忆 (MemoryStore + EnhancedMemoryManager)
+- [x] 技能市场 (Plugin System - workspace/skills/)
 - [ ] 人机协作工作流增强
-- [ ] 销售方案生成 (ProposalGeneratorTool)
-- [ ] 智能合同起草 (ContractDraftTool)
-- [ ] 销售教练模式 (SalesCoachTool)
+- [x] 销售方案生成 (ProposalGeneratorTool)
+- [x] 智能合同起草 (ContractDraftTool)
+- [x] 销售教练模式 (SalesCoachTool)
 - [ ] 客户画像提取 (CustomerProfileExtractor)
 - [ ] 千人千面个性化 (PersonalizationEngine)
 - [ ] 数据驾驶舱
@@ -339,6 +342,63 @@
   3. 通知人工客服
   4. 发送安抚消息: "我正在为您转接专属客服..."
 ```
+
+---
+
+## 📋 架构改进计划
+
+> 详细设计文档: [docs/plans/2026-03-11-architecture-improvement-design.md](docs/plans/2026-03-11-architecture-improvement-design.md)
+
+### 当前问题
+
+通过代码审查发现，安全系统组件虽已完整实现，但未在AgentLoop中集成：
+
+| 组件 | 代码行数 | Loop集成状态 |
+|------|---------|-------------|
+| GuardrailManager | 699 | ❌ 未调用 |
+| EmotionFuse | 433 | ✅ 已调用 |
+| ConfidenceRouter | 314 | ❌ 未初始化 |
+| HumanHandoffManager | 717 | ❌ 未调用 |
+
+### 改进后的AgentLoop流程
+
+```
+AgentLoop._process_message()
+    │
+    ├── Phase 1: 输入分析
+    │   ├── IntentRecognizer → 意图识别
+    │   └── EmotionAnalyzer → 情绪分析
+    │
+    ├── Phase 2: 输入安全检查 (Input Guards)
+    │   └── EmotionFuse → requires_human? → 转人工
+    │
+    ├── Phase 3: 置信度预评估
+    │   └── ConfidenceRouter → LOW → 转人工
+    │                    → MEDIUM → 草稿审核
+    │                    → HIGH → 正常处理
+    │
+    ├── Phase 4: LLM处理 + 方法论注入
+    │   ├── SalesStage → MethodologyPromptInjector
+    │   └── _run_agent_loop() → LLM → Tools
+    │
+    ├── Phase 5: 输出安全检查 (Output Guards)
+    │   └── GuardrailManager → BLOCK → 阻止转人工
+    │                      → REVIEW → 标记复核
+    │                      → WARNING → 日志允许
+    │
+    └── Phase 6: 响应发送 / 人工交接
+```
+
+### 实现优先级
+
+| 优先级 | 改动项 | 状态 |
+|-------|-------|------|
+| P0 | 集成GuardrailManager到Loop | 待实现 |
+| P0 | 集成ConfidenceRouter到Loop | 待实现 |
+| P0 | 新增统一人工交接处理 | 待实现 |
+| P1 | 新增方法论提示词注入器 | 待实现 |
+| P1 | 集成销售阶段跟踪 | 待实现 |
+| P2 | 完整人工交接通知流程 | 待实现 |
 
 
 
